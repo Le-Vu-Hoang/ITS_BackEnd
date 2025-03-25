@@ -14,7 +14,7 @@ app.add_middleware(
     allow_origins=["http://localhost5173"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_header=["*"],
+    allow_headers=["*"],
 )
 
 UPLOAD_FOLDER = "uploads"
