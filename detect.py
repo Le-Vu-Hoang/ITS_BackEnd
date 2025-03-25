@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import cv2
 import os
 
-model = YOLO("models/best.pt")
+model = YOLO("models/v3/best.pt")
 
 def detect_objects(img):
     results = model(img, conf=0.1)[0]
