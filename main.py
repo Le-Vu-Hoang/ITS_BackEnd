@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, Response
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import cv2
 import shutil
@@ -7,6 +8,15 @@ import os
 from detect import detect_objects, process_video
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_header=["*"],
+)
+
 UPLOAD_FOLDER = "uploads"
 OUTPUT_FOLDER = "outputs"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
