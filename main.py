@@ -38,5 +38,9 @@ async def detect_video_api(file: UploadFile = File(...)):
     with open(video_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
     process_video(video_path, output_path)
-
-    return FileResponse(output_path, media_type="video/mp4", filename=f"processed_{file.filename}")
+    return FileResponse(
+    output_path,
+    media_type="video/mp4",
+    filename=f"processed_{file.filename}",
+    headers={"Content-Disposition": "inline"}
+)
